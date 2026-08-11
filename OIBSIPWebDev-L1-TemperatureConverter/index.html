@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A responsive, browser-based Temperature Converter built using HTML5, CSS3, and vanilla JavaScript for OIBSIP Web Development Task 3.">
+    <title>Temperature Converter | OIBSIP Web Dev Task 3</title>
+    
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Decor Elements -->
+    <div class="bg-shape bg-shape-1" aria-hidden="true"></div>
+    <div class="bg-shape bg-shape-2" aria-hidden="true"></div>
+
+    <div class="app-container">
+        <!-- Main Application Header -->
+        <header class="app-header">
+            <div class="header-badge">OIBSIP • Task 3</div>
+            <h1 class="app-title">
+                <span class="icon" aria-hidden="true">🌡️</span> Temperature Converter
+            </h1>
+            <p class="app-subtitle">Convert between Celsius, Fahrenheit, and Kelvin seamlessly</p>
+        </header>
+
+        <!-- Converter Card -->
+        <main class="converter-card">
+            <form id="tempForm" novalidate>
+                <!-- Input Fields Grid -->
+                <div class="input-grid">
+                    <!-- Temperature Value Input -->
+                    <div class="input-group">
+                        <label for="tempInput" class="input-label">Temperature Value</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="number" 
+                                id="tempInput" 
+                                name="tempValue"
+                                placeholder="Enter value (e.g. 25)" 
+                                step="any"
+                                required
+                                autocomplete="off"
+                            >
+                            <span class="input-icon" aria-hidden="true">🔢</span>
+                        </div>
+                    </div>
+
+                    <!-- Unit Selector Dropdown -->
+                    <div class="input-group">
+                        <label for="unitSelect" class="input-label">Input Unit</label>
+                        <div class="select-wrapper">
+                            <select id="unitSelect" name="unit">
+                                <option value="celsius">Celsius (°C)</option>
+                                <option value="fahrenheit">Fahrenheit (°F)</option>
+                                <option value="kelvin">Kelvin (K)</option>
+                            </select>
+                            <span class="select-icon" aria-hidden="true">▼</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="button-group">
+                    <button type="submit" id="convertBtn" class="btn btn-primary">
+                        <span class="btn-icon">⚡</span> Convert
+                    </button>
+                    <button type="button" id="resetBtn" class="btn btn-secondary">
+                        <span class="btn-icon">🔄</span> Reset
+                    </button>
+                </div>
+            </form>
+
+            <!-- Friendly Error Message Box -->
+            <div id="errorBox" class="error-box hidden" role="alert" aria-live="assertive">
+                <span class="error-icon">⚠️</span>
+                <p id="errorMessage" class="error-text"></p>
+            </div>
+
+            <!-- Conversion Results Container -->
+            <section id="resultsContainer" class="results-container hidden" aria-live="polite">
+                <h2 class="results-heading">Converted Values</h2>
+                
+                <div class="results-grid">
+                    <!-- Celsius Result Card -->
+                    <div class="result-card" id="cardCelsius">
+                        <div class="card-header">
+                            <span class="unit-symbol">°C</span>
+                            <span class="unit-name">Celsius</span>
+                        </div>
+                        <div class="card-value" id="valCelsius">--</div>
+                        <span class="input-indicator hidden" id="badgeCelsius">Source Unit</span>
+                    </div>
+
+                    <!-- Fahrenheit Result Card -->
+                    <div class="result-card" id="cardFahrenheit">
+                        <div class="card-header">
+                            <span class="unit-symbol">°F</span>
+                            <span class="unit-name">Fahrenheit</span>
+                        </div>
+                        <div class="card-value" id="valFahrenheit">--</div>
+                        <span class="input-indicator hidden" id="badgeFahrenheit">Source Unit</span>
+                    </div>
+
+                    <!-- Kelvin Result Card -->
+                    <div class="result-card" id="cardKelvin">
+                        <div class="card-header">
+                            <span class="unit-symbol">K</span>
+                            <span class="unit-name">Kelvin</span>
+                        </div>
+                        <div class="card-value" id="valKelvin">--</div>
+                        <span class="input-indicator hidden" id="badgeKelvin">Source Unit</span>
+                    </div>
+                </div>
+
+                <!-- Conversion Formulas Display Box -->
+                <div class="formula-box">
+                    <div class="formula-header">
+                        <span class="formula-icon">📐</span>
+                        <span class="formula-title">Formulas Applied:</span>
+                    </div>
+                    <div id="formulaText" class="formula-content"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Credits -->
+        <footer class="app-footer">
+            <p>Developed by <strong>Dineth</strong> | Oasis Infobyte Web Development Intern</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
